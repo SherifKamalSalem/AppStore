@@ -72,6 +72,12 @@ class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayou
         enterSearchTermLabel.isHidden = appResults.count != 0
         return appResults.count
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appId = appResults[indexPath.item].trackId
+        let appDetailController = AppDetailController(appId: String(appId))
+        navigationController?.pushViewController(appDetailController, animated: true)
+    }
 }
 
 extension AppSearchController: UISearchBarDelegate {
